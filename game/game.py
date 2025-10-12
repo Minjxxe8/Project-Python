@@ -1,5 +1,6 @@
+from game.UI import print_ascii_survival
+
 def game():
-    """
-    The function will be the game's main loop.
-    """
-    print("Hello world")
+    print_ascii_survival()
+    player = input("Enter your username: ")
+    print(f"Welcome {player} !")
