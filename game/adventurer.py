@@ -17,15 +17,3 @@ class Adventurer :
     def sleep(self, add_energy = 20):
         self.energy = min(100, self.energy + add_energy)
 
-    def fish(self):
-        self.hungry = min(100, self.hungry + 20)
-        self.energy = max(0, self.energy - 20)
-
-    def search_water(self):
-        self.thirsty = min(100, self.thirsty + 20)
-        self.energy = max(0, self.energy - 20)
-
-    def sleep(self):
-        self.energy = min(100, self.energy + 20)
-        self.thirsty = max(0, self.thirsty - 20)
-        self.hungry = max(0, self.hungry - 20)
