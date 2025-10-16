@@ -9,13 +9,13 @@ class Adventurer :
         return self.thirsty > 0 and self.hungry > 0 and self.energy > 0
 
     def drink(self, add_drink = 20):
-        self.thirsty = max(100, self.thirsty + add_drink)
+        self.thirsty = min(100, self.thirsty + add_drink)
 
     def eat(self, add_eat = 20):
-        self.hungry = max(100, self.hungry + add_eat)
+        self.hungry = min(100, self.hungry + add_eat)
 
     def sleep(self, add_energy = 20):
-        self.energy = max(100, self.energy + add_energy)
+        self.energy = min(100, self.energy + add_energy)
 
     def fish(self):
         self.hungry = min(100, self.hungry + 20)
