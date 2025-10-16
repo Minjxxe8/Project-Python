@@ -1,6 +1,11 @@
 from game.UI import print_ascii_survival
+from game.events.events import Hunting, RandomEvent
+
+h = Hunting()
 
 player = ""
+energie = 20
+
 choices = {
     "1": "First choice",
     "2": "Second choice",
@@ -12,6 +17,7 @@ choices = {
 def game():
     print_ascii_survival()
     player = input("Enter your name: ")
+    re = RandomEvent()
     print(f"Hello {player}!")
     game_loop = True
     while game_loop:
@@ -22,6 +28,8 @@ def game():
             game_loop = False
         elif choice.lower() == "i":
             print("You have open the inventory")
+        elif choice.lower() == "e":
+            re.start()
         else :
             print("Its not on the choices, choose another one")
     return None
