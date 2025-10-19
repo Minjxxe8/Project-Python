@@ -1,37 +1,27 @@
 from game.UI import print_ascii_survival
-from game.events.events import Hunting, RandomEvent
+from game.events.events import Hunting, Discovery
+from game.adventurer import Adventurer
 
-h = Hunting()
+a = Adventurer("non")
 
-player = ""
-energie = 20
-
-choices = {
-    "1": "First choice",
-    "2": "Second choice",
-    "3": "Third choice",
-    "4": "Fourth choice",
-    "5": "Fifth choice",
-}
 
 def game():
     print_ascii_survival()
     player = input("Enter your name: ")
-    re = RandomEvent()
     print(f"Hello {player}!")
     game_loop = True
     while game_loop:
         choice = input("Enter your choice: ")
-        if choice in choices:
-            print(f"{choices[choice]} choice selected.")
-        elif choice.lower() == "q":
-            game_loop = False
-        elif choice.lower() == "i":
-            print("You have open the inventory")
-        elif choice.lower() == "e":
-            re.start()
+        if choice == "d".lower() :
+            a.drink()
+        elif choice == "e".lower() :
+            a.eat()
+        elif choice == "s".lower() :
+            a.sleep()
         else :
             print("Its not on the choices, choose another one")
+
+        a.print_adventurer_state()
     return None
 
 

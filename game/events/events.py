@@ -1,6 +1,11 @@
 import random
+from game.adventurer import Adventurer
+
 
 class Event:
+
+    def __init__(self, adventurer: Adventurer):
+        self.adventurer = adventurer
 
     def start(self):
         pass
@@ -12,7 +17,7 @@ class Event:
 class Raining (Event):
 
     def start(self):
-        #soif -= 10
+        self.adventurer.thirsty +=20
         pass
 
 class Hunting(Event):
@@ -22,30 +27,32 @@ class Hunting(Event):
         "lion": "50"
     }
 
-    def starting(self):
-        #Il gagne à chaque fois, mais ça lui prend beacoup d'énergies
-        #energie -= 20
-        #print(f"energie : {energie}")
+    def start(self):
+
+        self.adventurer.energy = max(0, self.adventurer.energy - 30)
         self.random_animal()
-        pass
 
     def random_animal(self):
-         random_animal = (random.choice(list(self.animals.items())))
-         print(random_animal)
-         #faim -= animal key
+         random_animal, value = (random.choice(list(self.animals.items())))
+         print(random_animal, value)
 
-class Discovery (Event):
+         self.adventurer.hungry = min(100, self.adventurer.hungry + int(value))
+
+class Discovery(Event):
+    fruits = {
+        "apple": "10",
+        "banana": "20",
+        "coconut": "30",
+    }
 
     def start(self):
-        self.random_finding()
+        random_fruit, value = (random.choice(list(self.fruits.items())))
+        print(random_fruit, value)
+        self.adventurer.hungry = min(100, self.adventurer.hungry + int(value))
 
 
-    def random_finding(self):
-        random_finding = (random.choice(list(self.ressources)))
-        print(random_finding)
-
-
-class RandomEvent :
+'''
+class RandomEvent(Event) :
     hunting = Hunting()
     raining = Raining()
     discovery = Discovery()
@@ -53,5 +60,5 @@ class RandomEvent :
     random_event = [hunting, raining, discovery]
 
     def start(self):
-        print(random.choice(list(self.random_event)))
+        print(random.choice(list(self.random_event)))'''
 
