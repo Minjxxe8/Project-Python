@@ -29,7 +29,7 @@ def center_content(content_lines):
 adventurer = Adventurer("")
 event_manager = EventManager(adventurer)
 
-def display_ui(adventurer):
+def display_ui(adventurer, current_part=None):
     event = event_manager.start_random_event()
     clear_screen()
     print(center_content(20))
@@ -45,6 +45,15 @@ def display_ui(adventurer):
 
     print("=" * 50)
 
+    print("\nSituation:")
+    if current_part:
+        print(f"Current objective: {current_part['name']}")
+        print(current_part['help'])
+    else:
+        print("You are surviving on the island...")
+
+    print("=" * 50)
+
     print("\nEvent:")
     print(event)
 
@@ -55,7 +64,6 @@ def display_ui(adventurer):
 
     print("=" * 50)
 
-    # Options en bas
     print("\n[Q] Quit" + " " * 25 + "[I] Inventory")
     print("\n" * 5)
 
@@ -66,4 +74,10 @@ def create_bar(value, length=10):
     return bar
 
 
-
+def display_situation(voice_text):
+    clear_screen()
+    print("="*50)
+    print("SITUATION:")
+    print(voice_text)
+    print("\n[OK] Press Enter to continue")
+    input()
