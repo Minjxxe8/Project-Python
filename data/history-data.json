@@ -1,0 +1,24 @@
+{
+  "intro" :  {
+    "voice" : "Well, welcome to the survival games! The rules are simple....."
+  },
+  "boat_parts" : [
+    {
+      "name" : "Hull",
+      "resources" : {
+        "Wood" : 50
+      },
+      "description" : "A sturdy piece of wood, essential for building a hull.",
+      "help" : "You have to make a hull to keep your boat float."
+    },
+     {
+      "name": "Mast",
+      "resources": {"Wood": 30, "Rope": 20},
+      "help": "The mast allows you to attach a sail...",
+      "voice": "Excellent! Next, we need a mast. Gather 30 wood and 20 rope."
+      }
+  ],
+  "outro" :  {
+    "voice" : "Goodbye from the survival games"
+  }
+}

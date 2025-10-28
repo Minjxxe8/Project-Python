@@ -8,12 +8,16 @@ class Adventurer :
     def is_alive(self):
         return self.thirsty > 0 and self.hungry > 0 and self.energy > 0
 
-    def drink(self, add_drink = 20):
-        self.thirsty = min(100, self.thirsty + add_drink)
+    def drink(self, add = 20):
+        self.thirsty = min(100, self.thirsty + add)
 
-    def eat(self, add_eat = 20):
-        self.hungry = min(100, self.hungry + add_eat)
+    def eat(self, add = 20):
+        self.hungry = min(100, self.hungry + add)
 
-    def sleep(self, add_energy = 20):
-        self.energy = min(100, self.energy + add_energy)
+    def sleep(self, add = 20):
+        self.energy = min(100, self.energy + add)
 
+    def print_adventurer_state(self):
+        print(f"energy : {self.energy}")
+        print(f"thirsty : {self.thirsty}")
+        print(f"hungry : {self.hungry}")
