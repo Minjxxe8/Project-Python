@@ -1,7 +1,7 @@
 from game.UI import print_ascii_survival, display_ui, display_situation
 from game.boat import Boat
 from game.events.events import Hunting, Discovery
-from game.adventurer import Adventurer
+from game.adventurer import Adventurer, Item, Inventory
 from game.voice import Voice
 
 a = Adventurer("non")
@@ -16,7 +16,6 @@ def game():
     display_situation(voice.intro)
     builder = Boat()
     part = builder.get_current_part()
-
 
     game_loop = True
     while game_loop:
@@ -35,7 +34,15 @@ def game():
             print("You have quit the game, but don't worry, the game is saved !")
             game_loop = False
         elif choice == "i".lower():
-            print("You have open the inventory (technically)")
+            print("\n=== Inventory ===")
+            inventory = a.inventory.get_inventory()
+            if inventory:
+                for name, quantity in inventory.items():
+                    print(f"{name}: {quantity}")
+            else:
+                print("Empty")
+            print("=================\n")
+            input("Press Enter to continue...")
         else :
             print("Its not on the choices, choose another one")
 
