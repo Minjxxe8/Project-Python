@@ -4,6 +4,7 @@ class Adventurer :
         self.thirsty = thirsty
         self.hungry = hungry
         self.energy = energy
+        self.inventory = []
 
     def is_alive(self):
         return self.thirsty > 0 and self.hungry > 0 and self.energy > 0
@@ -21,3 +22,27 @@ class Adventurer :
         print(f"energy : {self.energy}")
         print(f"thirsty : {self.thirsty}")
         print(f"hungry : {self.hungry}")
+
+class Item:
+    def __init__(self, name, quantity):
+        self.name = name
+        self.quantity = quantity
+
+class Inventory:
+    def __init__(self):
+        self.items = {}
+
+    def add_item(self, item):
+        if item.name in self.items:
+            self.items[item.name].quantity += item.quantity
+        else:
+            self.items[item.name] = item
+
+    def remove_item(self, name, quantity):
+        if name in self.items:
+            self.items[name].quantity -= quantity
+            if self.items[name].quantity <= 0:
+                del self.items[name]
+
+    def get_inventory(self):
+        return self.items
