@@ -25,7 +25,9 @@ def game():
         if choice == "1" :
             a.drink()
         elif choice == "2" :
-            a.eat()
+            message = a.eat()
+            print(message)
+            input("Press enter to continue...")
         elif choice == "3" :
             a.sleep()
         elif choice == "h".lower() :
@@ -40,7 +42,7 @@ def game():
                 for name, quantity in inventory.items():
                     print(f"{name}: {quantity}")
             else:
-                print("Empty")
+                print("\n" *2)
             print("=================\n")
             input("Press Enter to continue...")
         else :

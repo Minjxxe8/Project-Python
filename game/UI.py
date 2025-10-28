@@ -26,10 +26,9 @@ def center_content(content_lines):
     return "\n" * padding
 
 
-adventurer = Adventurer("")
-event_manager = EventManager(adventurer)
 
 def display_ui(adventurer, current_part=None):
+    event_manager = EventManager(adventurer)
     event = event_manager.start_random_event()
     clear_screen()
     print(center_content(20))

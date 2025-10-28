@@ -12,8 +12,17 @@ class Adventurer :
     def drink(self, add = 20):
         self.thirsty = min(100, self.thirsty + add)
 
-    def eat(self, add = 20):
-        self.hungry = min(100, self.hungry + add)
+    def eat(self):
+        if self.hungry >= 100:
+            return "You are not hungry!"
+
+        food_items = ["Fish", "Meat", "Apple", "Banana", "Coconut"]
+        for food in food_items:
+            if food in self.inventory.items and self.inventory.items[food].quantity > 0:
+                self.hungry = min(100, self.hungry + 20)
+                self.inventory.remove_item(food, 1)
+                return f"You have eaten {food}!"
+        return "You have no food to eat!"
 
     def sleep(self, add = 20):
         self.energy = min(100, self.energy + add)

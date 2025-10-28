@@ -1,5 +1,5 @@
 import random
-from game.adventurer import Adventurer
+from game.adventurer import Adventurer, Item
 
 
 class Event:
@@ -25,9 +25,9 @@ class Raining (Event):
 
 class Hunting(Event):
     animals = {
-        "poulet": "10",
-        "cochon": "20",
-        "lion": "50"
+        "poulet": {"meat": 2},
+        "cochon": {"meat": 3},
+        "lion": {"meat": 5}
     }
 
     def start(self):
@@ -36,30 +36,29 @@ class Hunting(Event):
         return self.random_animal()
 
     def random_animal(self):
-         random_animal, value = (random.choice(list(self.animals.items())))
-         self.adventurer.hungry = min(100, self.adventurer.hungry + int(value))
-         self.description = f"You have chase a {random_animal} , you have gained {value} point of hunger, but you have lost energy"
-         return self.description
+        random_animal, values = random.choice(list(self.animals.items()))
+        self.adventurer.inventory.add_item(Item("Meat", values["meat"]))
+        self.description = f"You have chased a {random_animal} and got {values['meat']} meat!"
+        return self.description
 
 class Discovery(Event):
     fruits = {
-        "apple": "10",
-        "banana": "20",
-        "coconut": "30",
+        "apple": 2,
+        "banana": 3,
+        "coconut": 1,
     }
 
     def start(self):
-        random_fruit, value = (random.choice(list(self.fruits.items())))
-        print(random_fruit, value)
-        self.adventurer.hungry = min(100, self.adventurer.hungry + int(value))
-        self.description = f"You have found : {random_fruit}, you have gained {value} point of hunger !"
+        random_fruit, quantity = random.choice(list(self.fruits.items()))
+        self.adventurer.inventory.add_item(Item(random_fruit, quantity))
+        self.description = f"You found {quantity} {random_fruit}(s)!"
         return self.description
 
 
 class EventManager:
     def __init__(self, adventurer):
         self.adventurer = adventurer
-        self.available_events = [Raining, Hunting, Discovery]
+        self.available_events = [Raining, Hunting, Discovery, WoodCutting]
 
     def start_random_event(self):
         event_class = random.choice(self.available_events)
@@ -69,3 +68,12 @@ class EventManager:
     def start_specific_event(self, event_class):
         event = event_class(self.adventurer)
         return event.start()
+
+
+class WoodCutting(Event):
+    def start(self):
+        self.adventurer.energy = max(0, self.adventurer.energy - 25)
+        wood_amount = random.randint(3, 7)
+        self.adventurer.inventory.add_item(Item("Wood", wood_amount))
+        self.description = f"You cut some wood and collected {wood_amount} pieces!"
+        return self.description
