@@ -58,7 +58,7 @@ class Discovery(Event):
 class EventManager:
     def __init__(self, adventurer):
         self.adventurer = adventurer
-        self.available_events = [Raining, Hunting, Discovery, WoodCutting]
+        self.available_events = [Raining, Hunting, Discovery]
 
     def start_random_event(self):
         event_class = random.choice(self.available_events)
@@ -70,10 +70,4 @@ class EventManager:
         return event.start()
 
 
-class WoodCutting(Event):
-    def start(self):
-        self.adventurer.energy = max(0, self.adventurer.energy - 25)
-        wood_amount = random.randint(3, 7)
-        self.adventurer.inventory.add_item(Item("Wood", wood_amount))
-        self.description = f"You cut some wood and collected {wood_amount} pieces!"
-        return self.description
+

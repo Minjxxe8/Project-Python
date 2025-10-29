@@ -32,6 +32,15 @@ class Adventurer :
         print(f"thirsty : {self.thirsty}")
         print(f"hungry : {self.hungry}")
 
+    def woodCutting(self):
+        self.energy = max(0, self.energy - 20)
+        self.thirsty = max(0, self.thirsty - 10)
+        self.hungry = max(0, self.hungry - 10)
+        wood_amount = 5
+        self.inventory.add_item(Item("Wood", wood_amount))
+        return f"You cut {wood_amount} pieces of wood!"
+
+
 class Item:
     def __init__(self, name, quantity=1):
         self.name = name

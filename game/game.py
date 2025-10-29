@@ -30,6 +30,10 @@ def game():
             input("Press enter to continue...")
         elif choice == "3" :
             a.sleep()
+        elif choice == "5":
+            message = a.woodCutting()
+            print(message)
+            input("Press enter to continue...")
         elif choice == "h".lower() :
             h.start()
         elif choice == "q" :

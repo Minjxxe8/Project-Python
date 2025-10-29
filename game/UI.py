@@ -59,7 +59,7 @@ def display_ui(adventurer, current_part=None):
     print("=" * 50)
 
     print("\nAction:")
-    print("  [1] Drink    [2] Eat    [3] Sleep")
+    print("  [1] Drink    [2] Eat    [3] Sleep    [5] Cut Wood")
 
     print("=" * 50)
 
