@@ -56,7 +56,7 @@ def display_ui(adventurer, weather_manager, current_part=None):
     print("=" * 50)
 
     print("\nAction:")
-    print("  [1] Drink    [2] Eat    [3] Sleep")
+    print("  [1] Drink    [2] Eat    [3] Sleep    [4] Explore")
 
     print("=" * 50)
 

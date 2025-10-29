@@ -2,13 +2,14 @@
 
 from game.UI import print_ascii_survival, display_ui, display_situation
 from game.boat import Boat
-from game.events.events import Hunting
+from game.events.events import Hunting, Explore
 from game.adventurer import Adventurer
 from game.events.weather import Weather
 from game.voice import Voice
 
 a = Adventurer("")
 h = Hunting(a)
+explorer = Explore(a)
 weather = Weather()
 voice = Voice()
 
@@ -38,6 +39,9 @@ def game():
                 display_situation("You can't eat right now due to the weather!")
         elif choice == "3" :
             a.sleep()
+        elif choice == "4":
+            result = explorer.start()
+            display_situation(result)
         elif choice == "h".lower() :
             h.start()
         elif choice == "q" :
@@ -48,7 +52,8 @@ def game():
         else :
             print("Its not on the choices, choose another one")
         if not a.is_alive():
-            print("You are dead")
+            reason = a.get_death_reason()
+            display_situation(f"{reason}")
             game_loop = False
     return None
 
