@@ -13,7 +13,7 @@
     },
      {
       "name": "Mast",
-      "resources": {"Wood": 30, "Rope": 20},
+      "resources": {"Wood": 30},
       "help": "The mast allows you to attach a sail...",
       "voice": "Excellent! Next, we need a mast. Gather 30 wood and 20 rope."
       }
