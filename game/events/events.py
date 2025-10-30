@@ -54,20 +54,30 @@ class Discovery(Event):
         self.description = f"You found {quantity} {random_fruit}(s)!"
         return self.description
 
+class Fishing(Event):
+    fish = {
+        "salmon": "10",
+        "bluefish": "20",
+        "Carp": "50"
+    }
 
-class EventManager:
-    def __init__(self, adventurer):
-        self.adventurer = adventurer
-        self.available_events = [Raining, Hunting, Discovery]
+    def start(self):
 
-    def start_random_event(self):
-        event_class = random.choice(self.available_events)
-        event = event_class(self.adventurer)
-        return event.start()
+        self.adventurer.energy = max(0, self.adventurer.energy - 30)
+        return self.random_fish()
 
-    def start_specific_event(self, event_class):
-        event = event_class(self.adventurer)
-        return event.start()
+    def random_fish(self):
+         random_fish, value = (random.choice(list(self.fish.items())))
+         self.adventurer.hungry = min(100, self.adventurer.hungry + int(value))
+         self.description = f"you have fishing a {random_fish} , you have gained {value} point of hunger, but you have lost energy"
+         return self.description
 
+class Explore(Event):
 
+    def start(self):
+        event_type = random.choice([Discovery, Hunting, Fishing])
+        event = event_type(self.adventurer)
+        result = event.start()
 
+        self.description = f"While exploring, {event.get_description()}"
+        return self.description

@@ -26,4 +26,10 @@ def woodCutting(adventurer):
     adventurer.hungry = max(0, adventurer.hungry - 20)
     wood_amount = 10
     adventurer.inventory.add_item(Item("Wood", wood_amount))
-    return f"You cut {wood_amount} pieces of wood !"
+
+    crafted_part = adventurer.boat.check_and_craft(adventurer.inventory)
+
+    message = f"You cut {wood_amount} pieces of wood !"
+
+    return message
+

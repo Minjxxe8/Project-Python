@@ -1,7 +1,6 @@
 import shutil
 
 from game.adventurer import Adventurer
-from game.events.events import EventManager
 
 
 def print_ascii_survival():
@@ -27,15 +26,16 @@ def center_content(content_lines):
 
 
 
-def display_ui(adventurer, current_part=None):
-    event_manager = EventManager(adventurer)
-    event = event_manager.start_random_event()
+def display_ui(adventurer, weather_manager, current_part=None):
+    weather_manager.adventurer = adventurer
     clear_screen()
     print(center_content(20))
 
-    # En-tête
     print("=" * 50)
     print("                    SURVIVAL")
+    print("=" * 50)
+
+    print(f"                    days : {adventurer.days}")
     print("=" * 50)
 
     print(f"Thirst:     [{create_bar(adventurer.thirsty)}] {adventurer.thirsty}%")
@@ -54,12 +54,12 @@ def display_ui(adventurer, current_part=None):
     print("=" * 50)
 
     print("\nEvent:")
-    print(event)
+    print(weather_manager.generate_weather(adventurer.days))
 
     print("=" * 50)
 
     print("\nAction:")
-    print("  [1] Drink    [2] Eat    [3] Sleep    [5] Cut Wood")
+    print("  [1] Drink    [2] Eat    [3] Sleep   [4]Explore   [5] Cut Wood")
 
     print("=" * 50)
 
