@@ -80,7 +80,7 @@ class Adventurer :
         self.energy = max(0, self.energy - 20)
         self.thirsty = max(0, self.thirsty - 10)
         self.hungry = max(0, self.hungry - 10)
-        wood_amount = 5
+        wood_amount = 10
         self.inventory.add_item(Item("Wood", wood_amount))
         return f"You cut {wood_amount} pieces of wood!"
 
