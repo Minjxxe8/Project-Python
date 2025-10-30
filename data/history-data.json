@@ -1,26 +1,74 @@
 {
   "intro" :  {
-    "voice" : "Well, welcome to the survival games! The rules are simple....."
+    "voice" : "Well, welcome to the survival games! The rules are simple: gather resources, build a boat, and escape the island. Let's get started!"
   },
   "boat_parts" : [
     {
       "name" : "Hull",
       "resources" : {
-        "Wood" : 5
+        "Wood" : 50
       },
-      "description" : "A sturdy piece of wood, essential for building a hull.",
-      "help" : "You have to make a hull to keep your boat float."
+      "description" : "A sturdy hull, the foundation of your boat. It keeps you afloat.",
+      "help" : "You need to build a hull first. It's the foundation that keeps your boat afloat. Gather 50 wood."
     },
-     {
+    {
+      "name" : "Deck",
+      "resources" : {
+        "Wood" : 40
+      },
+      "description": "A flat wooden surface that covers the hull.",
+      "help": "Now you need a deck to walk on. Gather 40 wood to build it."
+    },
+    {
       "name" : "Mast",
       "resources" : {
-        "Wood" : 5
+        "Wood" : 10
       },
-      "description": "The mast allows you to attach a sail...",
-      "help": "Excellent! Next, we need a mast. Gather 30 wood."
-      }
+      "description": "A tall wooden pole that holds the sail upright.",
+      "help": "Time to build a mast to catch the wind. You'll need 30 wood."
+    },
+    {
+      "name" : "Sail",
+      "resources" : {
+        "Wood" : 20
+      },
+      "description": "A large piece of fabric (improvised from wood) to catch the wind.",
+      "help": "You need a sail to harness the wind. Gather 20 wood."
+    },
+    {
+      "name" : "Rudder",
+      "resources" : {
+        "Wood" : 25
+      },
+      "description": "A steering mechanism attached to the stern of the boat.",
+      "help": "A rudder is essential for steering. Collect 25 wood."
+    },
+    {
+      "name" : "Oars",
+      "resources" : {
+        "Wood" : 15
+      },
+      "description": "Two wooden paddles for manual propulsion.",
+      "help": "Build some oars as backup propulsion. You need 15 wood."
+    },
+    {
+      "name" : "Storage Chest",
+      "resources" : {
+        "Wood" : 20
+      },
+      "description": "A wooden box to store supplies during your journey.",
+      "help": "You'll need a storage chest for your supplies. Gather 20 wood."
+    },
+    {
+      "name" : "Anchor",
+      "resources" : {
+        "Wood" : 10
+      },
+      "description": "A heavy wooden anchor to keep the boat in place.",
+      "help": "Final piece! Build an anchor to secure your boat. Only 10 wood needed."
+    }
   ],
   "outro" :  {
-    "voice" : "Goodbye from the survival games"
+    "voice" : "You have successfully built your boat and are ready to set sail! Good luck on your journey!"
   }
 }
